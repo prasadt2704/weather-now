@@ -15,30 +15,38 @@ It’s designed for **travel enthusiasts** who want to plan trips with **weather
 
 - **React (Vite)** – for **fast development** and **modular UI**
 - **Tailwind CSS** – for **utility-first styling** and **dark mode theming**
-- **OpenWeatherMap API** – for **real-time weather data**
-- **LocalStorage** – to persist **user watchlist**
+- **Weather API** – for **real-time weather data**
 - **JavaScript (ES6+)** – core logic & **API integration**
 
 ## ⚙️ **Setup Instructions**
 
 1. **Clone Repository**  
-   ```bash
-   git clone https://github.com/yourusername/weathernow.git
+  ```bash
+  git clone https://github.com/yourusername/weathernow.git
+  ```
 
-2. Install Dependencies
-npm install
+2. **Install Dependencies**
+  ```bash
+  npm install
+  ```
 
-3. Add Environment Variables
+3. **Add Environment Variables**
 
-Create a .env file in the root:
+  Create a .env file in the root:
 
-VITE_WEATHER_API_KEY=your_openweathermap_api_key
+  ```
+  VITE_WEATHER_API_KEY=your_openweathermap_api_key
+  ```
 
-4. Run Locally
-npm run dev
+4. **Run Locally**
+  ```bash
+  npm run dev
+  ```
 
-5. Build for Production
-npm run build
+5. **Build for Production**
+  ```bash
+  npm run build
+  ```
 
 ## Technical Decisions & Trade-offs
 
