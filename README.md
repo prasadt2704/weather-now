@@ -22,30 +22,16 @@ It’s designed for **travel enthusiasts** who want to plan trips with **weather
 
 1. **Clone Repository**  
   ```bash
-  git clone https://github.com/yourusername/weathernow.git
+  git clone https://github.com/prasadt2704/weathernow.git
   ```
 
 2. **Install Dependencies**
   ```bash
   npm install
   ```
-
-3. **Add Environment Variables**
-
-  Create a .env file in the root:
-
-  ```
-  VITE_WEATHER_API_KEY=your_openweathermap_api_key
-  ```
-
-4. **Run Locally**
+3. **Run Locally**
   ```bash
   npm run dev
-  ```
-
-5. **Build for Production**
-  ```bash
-  npm run build
   ```
 
 ## Technical Decisions & Trade-offs
@@ -62,31 +48,20 @@ It’s designed for **travel enthusiasts** who want to plan trips with **weather
 
 Chose **utility-first approach** over **SCSS** for **speed** and **maintainability** with multiple contributors.
 
-### API Integration
-
-**OpenWeatherMap** was selected due to its **global coverage** and “**Group API**” capability for fetching multiple cities efficiently.
-
-**Trade-off**: Requires city IDs for batching but reduces API calls by up to **80%**.
-
-### State & Data Refresh
-
-Used **useEffect** + **setInterval** for lightweight **auto-refresh logic**.
-
-Chose **simplicity** over **Redux** since the app state is minimal and easily managed locally.
 
 ## 🤖 AI Usage Notes
 
 AI (**ChatGPT – GPT-5**) was used to:
 
 - Brainstorm **UI layout** & **UX flow**
-- Draft initial **Tailwind CSS layout**
 - Generate **README structure** and phrasing
+- To fix the theme issues generated due to using tailwind and vite config
 
 All final decisions, logic, and code were reviewed and refined manually by the developer.
 
 ## 🧱 Scaling Plan (Team of 3–5 Frontend Engineers)
 
-## 🧱 Scaling Guidelines
+## Guidelines
 
 Each feature module (e.g., Search, Watchlist, CityDetails) is self-contained with its own UI, hooks, and tests.
 
