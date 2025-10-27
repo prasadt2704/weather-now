@@ -57,22 +57,18 @@ export default function Table({ watchList, setWatchList }) {
   };
 
   const filterByCountry = (country) => {
-    const filteredData = tableData.filter(
-      (city) => city.country === country
-    );
+    const filteredData = tableData.filter((city) => city.country === country);
     setFilterTableData(filteredData);
     setIsDropdownOpen(false);
-  }
+  };
 
   const clearFilter = () => {
     setFilterTableData(tableData);
     setIsDropdownOpen(false);
-  }
+  };
 
   const handleDelete = (cityName) => {
-    const updatedTableData = tableData.filter(
-      (city) => city.name !== cityName
-    );
+    const updatedTableData = tableData.filter((city) => city.name !== cityName);
     setTableData(updatedTableData);
     setFilterTableData(updatedTableData);
     setWatchList((prev) => prev.filter((city) => city !== cityName));
@@ -88,15 +84,15 @@ export default function Table({ watchList, setWatchList }) {
           Filter by Country
         </button>
         {isDropdownOpen && (
-            <div className="absolute mt-2 w-100 bg-white border border-gray-300 rounded shadow-lg z-10 left-7.5">
+          <div className="absolute mt-2 w-100 bg-white border border-gray-300 rounded shadow-lg z-10 left-7.5">
             {countries.length > 0 ? (
               <ul className="py-1">
                 <li
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black border-b"
-              onClick={clearFilter}
-            >
-              Clear Filter
-            </li>
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black border-b"
+                  onClick={clearFilter}
+                >
+                  Clear Filter
+                </li>
                 {countries.map((country, index) => (
                   <li
                     key={index}
@@ -108,7 +104,9 @@ export default function Table({ watchList, setWatchList }) {
                 ))}
               </ul>
             ) : (
-              <div className="px-4 py-2 text-gray-500">No countries available</div>
+              <div className="px-4 py-2 text-gray-500">
+                No countries available
+              </div>
             )}
           </div>
         )}
@@ -129,69 +127,75 @@ export default function Table({ watchList, setWatchList }) {
         </button>
       </div>
 
-      <table className="min-w-full mx-5 bg-white dark:bg-gray-800">
-        <thead>
-          <tr>
-            <th className="py-2 px-4 mx-5 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-              City
-            </th>
-            <th className="py-2 px-4 mx-5 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Country
-            </th>
-            <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Temperature
-            </th>
-            <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Condition
-            </th>
-            <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Humidity
-            </th>
-            <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filterTableData.length === 0 && (
+      <div className="overflow-x-auto mx-5">
+        <table className="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+          <thead>
             <tr>
-              <td
-                colSpan="6"
-                className="py-2 text-center text-gray-700 dark:text-gray-300"
-              >
-                No data available
-              </td>
+              <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                City
+              </th>
+              <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Country
+              </th>
+              <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Temperature
+              </th>
+              <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Condition
+              </th>
+              <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Humidity
+              </th>
+              <th className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Actions
+              </th>
             </tr>
-          )}
-          {filterTableData.map((city, index) => (
-            <tr
-              key={index}
-              className="hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-                {city.name}
-              </td>
-              <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-                {city.country}
-              </td>
-              <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-                {city.temperature} °C
-              </td>
-              <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-                {city.condition}
-              </td>
-              <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-                {city.humidity}
-              </td>
-              <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
-                <button onClick={() => handleDelete(city.name)}>
-                  <TrashIcon className="w-5 h-5"/>
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filterTableData.length === 0 ? (
+              <tr>
+                <td
+                  colSpan="6"
+                  className="py-2 text-center text-gray-700 dark:text-gray-300"
+                >
+                  No data available
+                </td>
+              </tr>
+            ) : (
+              filterTableData.map((city, index) => (
+                <tr
+                  key={index}
+                  className="hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
+                  <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+                    {city.name}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+                    {city.country}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+                    {city.temperature} °C
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+                    {city.condition}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+                    {city.humidity}
+                  </td>
+                  <td className="py-2 px-4 border-b border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+                    <button
+                      onClick={() => handleDelete(city.name)}
+                      className="text-red-500 hover:text-red-600"
+                    >
+                      <TrashIcon className="w-5 h-5" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
